@@ -9,7 +9,20 @@ import {
 } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
-import { saveBook, searchGoogleBooks } from '../utils/API';
+
+//=========================================================================================================
+// RESTful API code
+//=========================================================================================================
+
+// import { saveBook, searchGoogleBooks } from '../utils/API';
+
+//=========================================================================================================
+
+//Apollo Client hooks
+import { useMutation } from '@apollo/client';
+import { SAVE_BOOK } from '../utils/mutations';
+// import { searchGoogleBooks } from '../utils/API'; // Make sure this is still used for Google Books search
+
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
 const SearchBooks = () => {
@@ -25,7 +38,7 @@ const SearchBooks = () => {
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
   useEffect(() => {
     return () => saveBookIds(savedBookIds);
-  });
+  }, [savedBookIds]); //Dependency array
 
   // create method to search for books and set state on form submit
   const handleFormSubmit = async (event) => {
