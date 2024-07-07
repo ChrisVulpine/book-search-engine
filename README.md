@@ -25,6 +25,8 @@ You can view a video demo video of the application here:
 
 * General Reference: https://www.w3schools.com/
 * react hooks: https://legacy.reactjs.org/docs/hooks-effect.html#effects-with-cleanup
+* google book API docs: https://developers.google.com/books
+
 
 
 ## License
