@@ -7,7 +7,7 @@ const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -29,6 +29,8 @@ const startApolloServer = async () => {
     typeDefs,
     resolvers,
     context: ({ req }) => authMiddleware({ req }),
+    introspection: true,
+    debug: true, // Enable detailed error messages
   });
 
   // Apply middleware to Express app for Apollo Server
