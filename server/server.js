@@ -31,6 +31,7 @@ const startApolloServer = async () => {
     context: ({ req }) => authMiddleware({ req }),
     introspection: true,
     debug: true, // Enable detailed error messages
+    playground: true,
   });
 
   // Apply middleware to Express app for Apollo Server
