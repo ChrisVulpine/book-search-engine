@@ -27,7 +27,9 @@ import { REMOVE_BOOK } from '../utils/mutations'; // Import the GraphQL mutation
 
 
 const SavedBooks = () => {
-  const [userData, setUserData] = useState({});
+  // const [userData, setUserData] = useState({});
+
+  const [userData, setUserData] = useState({ savedBooks: [] });
 
   // use this to determine if `useEffect()` hook needs to run again
  //FIXME: RESTful Code // const userDataLength = Object.keys(userData).length;
