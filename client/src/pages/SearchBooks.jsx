@@ -92,7 +92,19 @@ const SearchBooks = () => {
     }
 
     try {
-      const { data } = await saveBook({ variables: { input: bookToSave }}); // FIXED: saveBook not defined. 
+      // const { data } = await saveBook({ variables: { input: bookToSave }}); // FIXED: saveBook not defined. 
+        const { data } = await saveBook({
+          variables: {
+            bookData: {  // Wrap the book fields into a bookData object
+              bookId: bookToSave.bookId,
+              authors: bookToSave.authors,
+              description: bookToSave.description,
+              title: bookToSave.title,
+              image: bookToSave.image,
+              link: bookToSave.link
+            }
+          }
+        });
 
       if (!data) {
         throw new Error('something went wrong!');
