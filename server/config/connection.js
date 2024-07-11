@@ -3,9 +3,9 @@ require('dotenv').config();
 
 
 //mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://ChrisVulpine:Yo9yOkFb0HY3Xgyd@cluster0.6rugocc.mongodb.net/googlebooks?retryWrites=true&w=majority&appName=Cluster0');
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/googlebooks');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/googlebooks');
 // mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/googlebooks');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://ChrisVulpine:j0OXkX0VX4ul8JJ5@cluster0.6rugocc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://ChrisVulpine:j0OXkX0VX4ul8JJ5@cluster0.6rugocc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 
 module.exports = mongoose.connection;
 
