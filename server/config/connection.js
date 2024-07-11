@@ -4,7 +4,7 @@ require('dotenv').config();
 
 // mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/googlebooks');
 
-mongoose.connection(process.env.MONGODB_URI || 'mongodb+srv://ChrisVulpine:99ctQeKKE0pS3ccI@cluster0.6rugocc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://ChrisVulpine:99ctQeKKE0pS3ccI@cluster0.6rugocc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 
 
 module.exports = mongoose.connection;
