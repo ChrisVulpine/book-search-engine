@@ -5,6 +5,7 @@ const { expressMiddleware } = require('@apollo/server/express4');
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
+require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -19,6 +20,10 @@ if (process.env.NODE_ENV === 'production') {
   // Serve index.html for all other routes to enable client-side routing
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/src/pages/SearchBooks.jsx'));
   });
 }
 
