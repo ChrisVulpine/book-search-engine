@@ -9,7 +9,16 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/googleboo
 
 module.exports = mongoose.connection;
 
-
+// mongoose.connect((process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/googlebooks'), {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useFindAndModify: false,
+//     useCreateIndex: true
+//   }).then(() => {
+//     console.log('MongoDB Connected');
+//   }).catch(err => {
+//     console.error('MongoDB Connection Error:', err);
+//   });
 
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 // const uri = "mongodb+srv://ChrisVulpine:11@Rocklee@cluster0.6rugocc.mongodb.net/?appName=Cluster0";
