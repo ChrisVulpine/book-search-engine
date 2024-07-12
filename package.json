@@ -6,8 +6,10 @@
   "scripts": {
     "start": "node server/server.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "install": "cd server && npm i && cd client && npm i",
-    "build": "cd client && npm run build",
+    "install": "cd server && npm i && cd../client && npm i",
+    "build:client": "cd client && npm install && npm run build",
+    "build:server": "cd server && npm install",
+    "build": "concurrently \"npm run build:client\" \"npm run build:server\"",
     "render-build": "npm install && npm run build"
   },
   "keywords": [],
