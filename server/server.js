@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Serve static files in production
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV !== 'production') {
   app.use(express.static(path.join(__dirname, '../client/dist')));
 
   // Serve index.html for all other routes to enable client-side routing
