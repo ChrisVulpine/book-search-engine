@@ -3,6 +3,7 @@ const path = require('path');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const { authMiddleware } = require('./utils/auth');
+const cors = require('cors');
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -29,6 +30,15 @@ const startApolloServer = async () => {
   await server.start();
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
+
+  app.use(cors({
+    origin: 'https://book-search-engine-v6z4.onrender.com', // Replace with your React app's origin
+    credentials: true,
+  }));
+
+
+
+
   app.use('/graphql', expressMiddleware(server, {
     context: async ({ req }) => authMiddleware({ req }),
   }));
