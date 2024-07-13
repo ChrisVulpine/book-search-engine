@@ -17,7 +17,7 @@ const server = new ApolloServer({
   context: ({ req }) => authMiddleware({ req }),
   introspection: true,
   debug: true, // Enable detailed error messages
-  playground: true,
+  playground: false,
 });
 
 const app = express();
@@ -67,7 +67,9 @@ if (process.env.NODE_ENV !== 'production') {
   db.once('open', () => {
     app.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
-      console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+      // console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+      console.log(`Use GraphQL at https://book-search-engine-v6z4.onrender.com/graphql`);
+
     });
   });
 };
