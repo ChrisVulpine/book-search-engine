@@ -3,15 +3,39 @@ const path = require('path');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const { authMiddleware } = require('./utils/auth');
+
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: ({ req }) => authMiddleware({ req }),
+  introspection: true,
+  debug: true, // Enable detailed error messages
+  playground: true,
+});
+
 const app = express();
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+
+// Apollo Server setup
+const startApolloServer = async () => {
+  // Create Apollo Server instance
+  // Apply middleware to Express app for Apollo Server
+  await server.start();
+  app.use(express.urlencoded({ extended: false }));
+  app.use(express.json());
+  app.use('/graphql', expressMiddleware(server, {
+    context: async ({ req }) => authMiddleware({ req }),
+  }));
+
+
+
+
 
 // Serve static files in production
 if (process.env.NODE_ENV !== 'production') {
@@ -27,23 +51,7 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-// Apollo Server setup
-const startApolloServer = async () => {
-  // Create Apollo Server instance
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    context: ({ req }) => authMiddleware({ req }),
-    introspection: true,
-    debug: true, // Enable detailed error messages
-    playground: true,
-  });
 
-  // Apply middleware to Express app for Apollo Server
-  await server.start();
-  app.use('/graphql', expressMiddleware(server, {
-    context: async ({ req }) => authMiddleware({ req }),
-  }));
 
   // Start the server after setting up Apollo Server
   db.once('open', () => {
