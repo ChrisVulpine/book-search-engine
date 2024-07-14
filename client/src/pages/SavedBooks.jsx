@@ -77,6 +77,7 @@ const SavedBooks = () => {
 
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
+
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -117,7 +118,7 @@ const SavedBooks = () => {
     <>
       <div fluid='true' className="text-light bg-dark p-5">
         <Container>
-          <h1>Viewing saved books TEST TEST!</h1>
+          <h1>Viewing saved books.</h1>
         </Container>
       </div>
       <Container>

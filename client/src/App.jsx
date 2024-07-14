@@ -10,7 +10,7 @@ import { setContext } from '@apollo/client/link/context';
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: 'https://book-search-engine-v6z4.onrender.com/graphql',
-  // uri: 'http://localhost:3000/graphql',
+  // This is for local work>>  uri: 'http://localhost:3000/graphql',
 
 });
 
