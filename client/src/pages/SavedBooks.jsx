@@ -28,12 +28,11 @@ import { REMOVE_BOOK } from '../utils/mutations'; // Import the GraphQL mutation
 
 
 const SavedBooks = () => {
-  // const [userData, setUserData] = useState({});
+
 
   const [userData, setUserData] = useState({ savedBooks: [] });
 
-  // use this to determine if `useEffect()` hook needs to run again
- //FIXME: RESTful Code // const userDataLength = Object.keys(userData).length;
+ // RESTful Code // const userDataLength = Object.keys(userData).length;
 
    // Use the useQuery hook to fetch user data
    const { loading, data } = useQuery(GET_ME);
@@ -97,10 +96,11 @@ const SavedBooks = () => {
         throw new Error('something went wrong!');
       }
 
-      // FIXME: RESTful API code // const updatedUser = await response.json();
+      //RESTful API code // const updatedUser = await response.json();
 
 
       setUserData(data.removeBook);
+
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
 
@@ -130,6 +130,7 @@ const SavedBooks = () => {
         <Row>
           {userData.savedBooks?.map((book) => {
             return (
+              
               // eslint-disable-next-line react/jsx-key
               
               <Col md="4" key={book.bookId}>

@@ -21,13 +21,14 @@ import Auth from '../utils/auth';
 //Apollo Client hooks
 import { useMutation } from '@apollo/client';
 import { SAVE_BOOK } from '../utils/mutations';
-// import { searchGoogleBooks } from '../utils/API'; // Make sure this is still used for Google Books search
+
 
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
 const SearchBooks = () => {
   // create state for holding returned google api data
   const [searchedBooks, setSearchedBooks] = useState([]);
+
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
 
@@ -35,11 +36,9 @@ const SearchBooks = () => {
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
 
   const [saveBook] = useMutation(SAVE_BOOK);
-  console.log('TEST 1');
+  // Log for testing successful saving console.log('Saved Book Ids:', savedBookIds);
 
-  
-  // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
-  // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
+
   useEffect(() => {
     return () => saveBookIds(savedBookIds);
   }, [savedBookIds]); //Dependency array
@@ -79,6 +78,7 @@ const SearchBooks = () => {
 
   // create function to handle saving a book to our database
   const handleSaveBook = async (bookId) => {
+
     // find the book in `searchedBooks` state by the matching id
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
 
@@ -93,7 +93,7 @@ const SearchBooks = () => {
     }
 
     try {
-      // const { data } = await saveBook({ variables: { input: bookToSave }}); // FIXED: saveBook not defined. 
+
         const { data } = await saveBook({
           variables: {
             bookData: {  // Wrap the book fields into a bookData object
