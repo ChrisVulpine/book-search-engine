@@ -4,7 +4,6 @@ require('dotenv').config();
 
 // Local MongoDB Compass >> mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/googlebooks');
 
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://ChrisVulpine:YJb0mgkbkElvutni@cluster0.6rugocc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 mongoose.connect(process.env.MONGODB_URI);
 
 module.exports = mongoose.connection;
