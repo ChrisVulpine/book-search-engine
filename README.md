@@ -6,7 +6,7 @@
 
   ## Description
 Welcome to BookDragon Cave! A place where, as a book lover, you can hoard and record your collection of books. 
-  
+
 **Technical stuff:** This is a full stack application using Google Books API. This was built using a MERN stack with a React front end, MongoDB Atlas database, Node.js/Epress.js server and incorporates GraphQL API build with an Apollo Server.
   ## Table of Contents
   
@@ -17,6 +17,8 @@ Welcome to BookDragon Cave! A place where, as a book lover, you can hoard and re
   
   ## Live Site
   Save your own hoard of books here: https://book-search-engine-v6z4.onrender.com/
+
+  ![alt text](client/public/img/site-demo.gif)
 
   ## Credits and References
 
